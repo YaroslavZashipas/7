@@ -1,11 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
-    </content>
-    <orderEntry type="inheritedJdk" />
-    <orderEntry type="sourceFolder" forTests="false" />
-  </component>
-</module>
+import java.util.Scanner;
+
+public class Main {
+
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        String result = "";
+
+        String choice = sc.nextLine();
+
+        switch (choice) {
+            case "1":
+                result = split();
+                break;
+            case "2":
+                result = reversal();
+                break;
+            case "3":
+                result = rtSplit();
+                break;
+        }
+
+        System.out.println(result);
+        sc.close();
+    }
+
+    // 1) Ввод строки с минимум 2 словами по 3 символа
+    public static String split() {
+
+        while (true) {
+            String input = sc.nextLine();
+            String[] words = input.trim().split(" ");
+
+            int count = 0;
+            for (String w : words) {
+                if (w.length() >= 3)
+                    count++;
+            }
+
+            if (count >= 2)
+                return input;
+        }
+    }
+
+    // 2) Перевернуть всю строку
+    public static String reversal() {
+        String input = sc.nextLine();
+        return new StringBuilder(input).reverse().toString();
+    }
+
+    // 3) Перевернуть каждое слово
+    public static String rtSplit() {
+        String input = sc.nextLine();
+        String[] words = input.trim().split(" ");
+
+        StringBuilder res = new StringBuilder();
+        for (String w : words) {
+            res.append(new StringBuilder(w).reverse()).append(" ");
+        }
+
+        return res.toString().trim();
+    }
+}
