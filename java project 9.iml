@@ -8,6 +8,7 @@ public class Main {
 
         String result = "";
 
+        // вибір функції
         String choice = sc.nextLine();
 
         switch (choice) {
@@ -20,13 +21,15 @@ public class Main {
             case "3":
                 result = rtSplit();
                 break;
+            default:
+                return;
         }
 
         System.out.println(result);
         sc.close();
     }
 
-    // 1) Ввод строки с минимум 2 словами по 3 символа
+    // 1) Ввід рядка з мінімум 2 словами довжиною >= 3
     public static String split() {
 
         while (true) {
@@ -34,8 +37,8 @@ public class Main {
             String[] words = input.trim().split(" ");
 
             int count = 0;
-            for (String w : words) {
-                if (w.length() >= 3)
+            for (String word : words) {
+                if (word.length() >= 3)
                     count++;
             }
 
@@ -44,22 +47,5 @@ public class Main {
         }
     }
 
-    // 2) Перевернуть всю строку
-    public static String reversal() {
-        String input = sc.nextLine();
-        return new StringBuilder(input).reverse().toString();
-    }
-
-    // 3) Перевернуть каждое слово
-    public static String rtSplit() {
-        String input = sc.nextLine();
-        String[] words = input.trim().split(" ");
-
-        StringBuilder res = new StringBuilder();
-        for (String w : words) {
-            res.append(new StringBuilder(w).reverse()).append(" ");
-        }
-
-        return res.toString().trim();
-    }
-}
+    // 2) Перевернути весь рядок
+    public static Stri
